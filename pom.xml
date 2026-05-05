@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sushi.ecommerce</groupId>
+  <artifactId>ecommerce-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>ecommerce-maven</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <!-- Java -->
+    <java.version>17</java.version>
+
+    <!-- Encoding -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Dependency Versions -->
+    <lombok.version>1.18.42</lombok.version>
+    <junit.jupiter.version>5.13.4</junit.jupiter.version>
+
+    <!-- Plugin Versions -->
+    <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+    <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
+    <!-- Main Class -->
+    <main.class>com.sushi.ecommerce.App</main.class>
+
+    <!-- Jar Plugin Version -->
+    <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+<build>
+<plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+      <source>${java.version}</source>
+      <target>${java.version}</target>
+      <!-- Lombok Annotation Processor -->
+      <annotationProcessorPaths>
+        <path>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>${lombok.version}</version>
+        </path>
+      </annotationProcessorPaths>
+    </configuration>
+  </plugin>
+  <!-- Surefire Plugin for JUnit 5 -->
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>${maven.surefire.plugin.version}</version>
+  </plugin>
+
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>${maven.jar.plugin.version}</version>
+
+    <configuration>
+      <archive>
+        <manifest>
+          <mainClass>${main.class}</mainClass>
+        </manifest>
+      </archive>
+    </configuration>
+  </plugin>
+</plugins>
+</build>
+
+</project>
