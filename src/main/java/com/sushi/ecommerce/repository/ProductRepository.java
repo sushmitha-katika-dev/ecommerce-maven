@@ -43,7 +43,7 @@ public class ProductRepository {
     public Product update(int id, Product product) {
         products.replaceAll(p -> p.getId() == id ? product : p);
         return product;
-    }
+}
     //4. delete by id
     public void delete(int id){
         products.removeIf(product -> product.getId() == id);
