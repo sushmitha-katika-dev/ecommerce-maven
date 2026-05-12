@@ -48,4 +48,16 @@ public class CustomerServiceImpl implements CustomerService{
                  .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id: " + id));
         customerRepository.delete(id);
     }
+
+    @Override
+    public boolean exists(String email) throws CustomerNotFoundException {
+        return this.customerRepository.exists(email);
+    }
+
+    @Override
+    public Customer getByEmail(String email) throws CustomerNotFoundException {
+        return this.customerRepository
+                .findByEmail(email)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with email: " + email));
+    }
 }

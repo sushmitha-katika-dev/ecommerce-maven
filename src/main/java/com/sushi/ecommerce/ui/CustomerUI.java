@@ -13,13 +13,15 @@ import java.util.List;
 
 
 public class CustomerUI {
-    private final CustomerController customerController;
+    private Customer customer;
+    private CustomerController customerController;
 
-    public CustomerUI() {
+    public CustomerUI(Customer customer) {
+        this.customer = customer;
         try {
             customerController = AppFactory.getCustomerController();
         } catch (Exception e) {
-            throw new RuntimeException("Failed to initialize ProductUI", e);
+            e.printStackTrace();
         }
     }
 

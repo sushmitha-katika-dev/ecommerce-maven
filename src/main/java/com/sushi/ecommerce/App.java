@@ -1,9 +1,8 @@
 package com.sushi.ecommerce;
 
-import com.sushi.ecommerce.model.Customer;
-import com.sushi.ecommerce.ui.CustomerUI;
-import com.sushi.ecommerce.ui.DashboardUI;
-import com.sushi.ecommerce.ui.ProductUI;
+import com.sushi.ecommerce.ui.MainMenu;
+
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -11,9 +10,8 @@ import com.sushi.ecommerce.ui.ProductUI;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws IOException {
         System.out.println( "Hello World!" );
-        new DashboardUI().show();
+        MainMenu.start();
     }
 }

@@ -71,4 +71,14 @@ public class CustomerRepository {
         customers.removeIf(c -> c.getId() == id);
     }
 
+    public boolean exists(String email) {
+        return customers.stream()
+                .anyMatch(c -> c.getEmail().equalsIgnoreCase(email));
+    }
+
+    public Optional<Customer> findByEmail(String email) {
+        return customers.stream()
+                .filter(customer -> customer.getEmail() == email)
+                .findFirst();
+    }
 }
