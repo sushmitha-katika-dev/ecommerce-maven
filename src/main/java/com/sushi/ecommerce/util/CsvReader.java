@@ -18,7 +18,7 @@ public class CsvReader {
 
         List<Product> products = new ArrayList<>();
 
-        File file = new File("C:/java-workspace/products.cvs");
+        File file = new File("C:/java-workspace/products.csv");
 
         if (!file.exists()){
             return products;
@@ -35,12 +35,11 @@ public class CsvReader {
                         .id(Integer.parseInt(data[0]))
                         .name(data[1])
                         .maxRetailPrice(Double.parseDouble(data[2]))
-                        .discountPercentage(Float.parseFloat(data[3]))
-                        .rating(Integer.parseInt(data[4]))
-                        .isAvailable(Boolean.parseBoolean(data[5]))
-                        .company(data[6])
-                        .category(data[7])
-                        .manufacturedYear(Integer.parseInt(data[8]))
+                        .discountPercentage(Double.parseDouble(data[3]))
+                        .isAvailable(Boolean.parseBoolean(data[4]))
+                        .company(data[5])
+                        .category(data[6])
+                        .manufacturedYear(Integer.parseInt(data[7]))
                         .build();
 
                 products.add(product);
@@ -55,7 +54,7 @@ public class CsvReader {
 
         List<Customer> customers = new ArrayList<>();
 
-        File file = new File("C:/java-workspace/customers.cvs");
+        File file = new File("C:/java-workspace/customers.csv");
 
         if (!file.exists()){
             return customers;

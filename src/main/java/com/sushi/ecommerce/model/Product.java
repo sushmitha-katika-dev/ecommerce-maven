@@ -15,7 +15,6 @@ public class Product {
     private String name;
     private double maxRetailPrice;
     private double discountPercentage;
-    private int rating;
     private boolean isAvailable;
     private String company;
     private String category;

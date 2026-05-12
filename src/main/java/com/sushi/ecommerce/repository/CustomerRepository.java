@@ -42,9 +42,29 @@ public class CustomerRepository {
                 .findFirst();
     }
     //3. update
-    public Customer update(int id, Customer customer) {
-        customers.replaceAll(c -> c.getId() == id ? customer : c);
-        return customer;
+    public Optional<Customer> update(Customer updatedCustomer) {
+        Optional<Customer> existing = findById(updatedCustomer.getId());
+
+        existing.ifPresent(c -> {
+            Customer updated = Customer.builder()
+                    .id(updatedCustomer.getId())
+                    .name(updatedCustomer.getName())
+                    .email(updatedCustomer.getEmail())
+                    .password(updatedCustomer.getPassword())
+                    .phoneNo(updatedCustomer.getPhoneNo())
+                    .age(updatedCustomer.getAge())
+                    .gender(updatedCustomer.getGender())
+                    .status(updatedCustomer.getStatus())
+                    .membership(updatedCustomer.getMembership())
+                    .residentialAddress(updatedCustomer.getResidentialAddress())
+                    .shippingAddress(updatedCustomer.getShippingAddress())
+                    .lastLoggedIn(updatedCustomer.getLastLoggedIn())
+                    .createdOn(c.getCreatedOn()) //preserve createdOn
+                    .lastLoggedIn(c.getLastLoggedIn())
+                    .build();
+        });
+
+        return existing;
     }
     //4. delete
     public void delete(int id){
