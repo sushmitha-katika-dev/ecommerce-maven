@@ -1,7 +1,6 @@
 package com.sushi.ecommerce.repository;
 
 import com.sushi.ecommerce.model.Customer;
-import com.sushi.ecommerce.model.Product;
 import com.sushi.ecommerce.util.CsvReader;
 
 import java.io.IOException;
@@ -18,6 +17,8 @@ public class CustomerRepository {
         if (this.customers == null){
             this.customers = new ArrayList<>();
         }
+        /*System.out.println("Loaded Customers:");
+        customers.forEach(System.out::println);*/
     }
 
     //CRUD operations
@@ -73,12 +74,16 @@ public class CustomerRepository {
 
     public boolean exists(String email) {
         return customers.stream()
-                .anyMatch(c -> c.getEmail().equalsIgnoreCase(email));
+                .anyMatch(c -> c.getEmail().trim()
+                        .equalsIgnoreCase(email.trim()));
     }
 
     public Optional<Customer> findByEmail(String email) {
+
         return customers.stream()
-                .filter(customer -> customer.getEmail() == email)
+                .filter(customer ->
+                        customer.getEmail().trim()
+                                .equalsIgnoreCase(email.trim()))
                 .findFirst();
     }
 }

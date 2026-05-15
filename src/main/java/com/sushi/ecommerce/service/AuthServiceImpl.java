@@ -42,4 +42,5 @@ public class AuthServiceImpl implements AuthService{
     public Customer getCustomerByEmail(String email) throws CustomerNotFoundException {
         return customerService.getByEmail(email);
     }
+
 }
